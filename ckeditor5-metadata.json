@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    {
+      "name": "Video",
+      "className": "Video",
+      "description": "Adds text to the editor.",
+      "path": "src/video.js",
+      "uiComponents": [
+        {
+          "name": "videoButton",
+          "type": "Button",
+          "iconPath": "theme/icons/ckeditor.svg"
+        }
+      ]
+    }
+  ]
+}
