@@ -1,4 +1,4 @@
-@kinto-dev/ckeditor5-video
+@kinto-tech/ckeditor5-video
 ==========================
 
 This package was created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package.
@@ -163,6 +163,6 @@ yarn run translations:upload --transifex [API URL]
 
 ## License
 
-The `@kinto-dev/ckeditor5-video` package is available under [MIT license](https://opensource.org/licenses/MIT).
+The `@kinto-tech/ckeditor5-video` package is available under [MIT license](https://opensource.org/licenses/MIT).
 
 However, it is the default license of packages created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package and it can be changed.
