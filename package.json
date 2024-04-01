@@ -1,5 +1,5 @@
 {
-  "name": "@kinto-tech/ckeditor5-video",
+  "name": "@kinto-technologies/ckeditor5-video",
   "version": "0.0.1",
   "description": "A plugin for CKEditor 5.",
   "keywords": [
@@ -12,6 +12,18 @@
     "ckeditor5-package-generator"
   ],
   "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kinto-technologies/ckeditor5-video.git"
+  },
+  "author": "KINTO Technologies Corp.",
+  "bugs": {
+    "url": "https://github.com/kinto-technologies/ckeditor5-video/issues"
+  },
+  "homepage": "https://github.com/kinto-technologies/ckeditor5-video#readme",
   "license": "MIT",
   "engines": {
     "node": ">=16.0.0",

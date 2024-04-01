@@ -1,168 +1,154 @@
-@kinto-tech/ckeditor5-video
+@kinto-technologies/ckeditor5-video
 ==========================
 
 This package was created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package.
 
-## Table of contents
+This plugin is enabling add video tag to CKEditor5 based on [@visao/ckeditor5-video](https://github.com/Technologie-Visao/ckeditor5-video).
 
-* [Developing the package](#developing-the-package)
-* [Available scripts](#available-scripts)
-  * [`start`](#start)
-  * [`test`](#test)
-  * [`lint`](#lint)
-  * [`stylelint`](#stylelint)
-  * [`dll:build`](#dllbuild)
-  * [`dll:serve`](#dllserve)
-  * [`translations:collect`](#translationscollect)
-  * [`translations:download`](#translationsdownload)
-  * [`translations:upload`](#translationsupload)
-* [License](#license)
+## Demo
 
-## Developing the package
+Run sample application by blow command.
 
-To read about the CKEditor 5 framework, visit the [CKEditor5 documentation](https://ckeditor.com/docs/ckeditor5/latest/framework/index.html).
-
-## Available scripts
-
-Npm scripts are a convenient way to provide commands in a project. They are defined in the `package.json` file and shared with other people contributing to the project. It ensures that developers use the same command with the same options (flags).
-
-All the scripts can be executed by running `yarn run <script>`. Pre and post commands with matching names will be run for those as well.
-
-The following scripts are available in the package.
-
-### `start`
-
-Starts a HTTP server with the live-reload mechanism that allows previewing and testing plugins available in the package.
-
-When the server has been started, the default browser will open the developer sample. This can be disabled by passing the `--no-open` option to that command.
-
-You can also define the language that will translate the created editor by specifying the `--language [LANG]` option. It defaults to `'en'`.
-
-Examples:
-
-```bash
-# Starts the server and open the browser.
-yarn run start
-
-# Disable auto-opening the browser.
-yarn run start --no-open
-
-# Create the editor with the interface in German.
-yarn run start --language=de
+```
+yarn start
 ```
 
-### `test`
+## Installation
 
-Allows executing unit tests for the package, specified in the `tests/` directory. The command accepts the following modifiers:
+Add this to your custom build or inside your project.
 
-* `--coverage` &ndash; to create the code coverage report,
-* `--watch` &ndash; to observe the source files (the command does not end after executing tests),
-* `--source-map` &ndash; to generate source maps of sources,
-* `--verbose` &ndash; to print additional webpack logs.
+- With npm
 
-Examples:
-
-```bash
-# Execute tests.
-yarn run test
-
-# Generate code coverage report after each change in the sources.
-yarn run test --coverage --test
+```
+npm install --save-dev @kinto-technologies/ckeditor5-video
 ```
 
-### `lint`
+- With yarn
 
-Runs ESLint, which analyzes the code (all `*.js` files) to quickly find problems.
-
-Examples:
-
-```bash
-# Execute eslint.
-yarn run lint
+```
+yarn add -D @kinto-technologies/ckeditor5-video
 ```
 
-### `stylelint`
+## Plugins
 
-Similar to the `lint` task, stylelint analyzes the CSS code (`*.css` files in the `theme/` directory) in the package.
+### Video Plugin
 
-Examples:
+- Plugin to parse videos in the editor
+- Mandatory for the other plugins VideoRelated plugins
 
-```bash
-# Execute stylelint.
-yarn run stylelint
+```js
+ClassicEditor
+    .create( document.querySelector( '#editor' ), {
+        plugins: [Video],
+        video: {}
+    } )
 ```
 
-### `dll:build`
+### VideoUpload Plugin
 
-Creates a DLL-compatible package build which can be loaded into an editor using [DLL builds](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/dll-builds.html).
+- Plugin to upload video files via toolbar upload prompt or drag and drop functionalities
+- Specify allowed media(mime) types. Default => `['mp4', 'webm', 'ogg']`
+- Allow multiple file upload or not, Default => `true`
+- Add the videoUpload toolbar option to access the file repository
+- Must provide an UploadAdapter.
+- The use of the Video plugin is mandatory for this plugin to work
 
-Examples:
+```js
+function VideoUploadAdapterPlugin( editor ) {
+    editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+        return new VideoUploadAdapter(loader);
+    };
+}
 
-```bash
-# Build the DLL file that is ready to publish.
-yarn run dll:build
-
-# Build the DLL file and listen to changes in its sources.
-yarn run dll:build --watch
+ClassicEditor
+    .create( document.querySelector( '#editor' ), {
+        plugins: [Video, VideoUpload],
+        extraPlugins: [VideoUploadAdapterPlugin],
+        toolbar: ['videoUpload'],
+        video: {
+            upload: {
+                types: ['mp4'],
+                allowMultipleFiles: false,
+            }
+        }
+    } )
 ```
 
-### `dll:serve`
+### VideoToolbar Plugin
 
-Creates a simple HTTP server (without the live-reload mechanism) that allows verifying whether the DLL build of the package is compatible with the CKEditor 5 [DLL builds](https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/dll-builds.html).
+- Balloon toolbar for different Video plugin plugins
+- See VideoResizing and VideoStyle sections for examples
 
-Examples:
+### VideoResizing Plugin
 
-```bash
-# Starts the HTTP server and opens the browser.
-yarn run dll:serve
+- Plugin for resizing the video in the editor
+- Should work just like image resize. See the ck-editor 5 documentation for more examples.
+
+```js
+ClassicEditor
+    .create( document.querySelector( '#editor' ), {
+        plugins: [Video, VideoToolbar, VideoResize], // or [Video, VideoToolbar, VideoResizeEditing, VideoResizeHandles],
+        video: {
+            resizeUnit: 'px',
+            // Configure the available video resize options.
+            resizeOptions: [
+                {
+                    name: 'videoResize:original',
+                    value: null,
+                    label: 'Original',
+                    icon: 'original'
+                },
+                {
+                    name: 'videoResize:50',
+                    value: '50',
+                    label: '50',
+                    icon: 'medium'
+                },
+                {
+                    name: 'videoResize:75',
+                    value: '75',
+                    label: '75',
+                    icon: 'large'
+                }
+            ],
+            toolbar: [
+                'videoResize',
+                '|',
+                'videoResize:50',
+                'videoResize:75',
+                'videoResize:original'
+            ]
+        },
+    } )
 ```
 
-### `translations:collect`
+### VideoStyle Plugin
 
-Collects translation messages (arguments of the `t()` function) and context files, then validates whether the provided values do not interfere with the values specified in the `@ckeditor/ckeditor5-core` package.
+- Plugin for styling the video plugins.
+- Should work just like image resize. See the ck-editor 5 documentation for more examples.
+- Predefined styles are:
+  - `full`
+  - `side`
+  - `alignLeft`
+  - `alignCenter`
+  - `alignRight`
 
-The task may end with an error if one of the following conditions is met:
+```js
 
-* Found the `Unused context` error &ndash; entries specified in the `lang/contexts.json` file are not used in source files. They should be removed.
-* Found the `Context is duplicated for the id` error &ndash; some of the entries are duplicated. Consider removing them from the `lang/contexts.json` file, or rewrite them.
-* Found the `Context for the message id is missing` error &ndash; entries specified in source files are not described in the `lang/contexts.json` file. They should be added.
-
-Examples:
-
-```bash
-yarn run translations:collect
-```
-
-### `translations:download`
-
-Download translations from the Transifex server. Depending on users' activity in the project, it creates translations files used for building the editor.
-
-The task requires passing the URL to Transifex API. Usually, it matches the following format: `https://www.transifex.com/api/2/project/[PROJECT_SLUG]`.
-
-To avoid passing the `--transifex` option every time when calls the command, you can store it in `package.json`, next to the `ckeditor5-package-tools translations:download` command.
-
-Examples:
-
-```bash
-yarn run translations:download --transifex [API URL]
-```
-
-### `translations:upload`
-
-Uploads translation messages onto the Transifex server. It allows for the creation of translations into other languages by users using the Transifex platform.
-
-The task requires passing the URL to the Transifex API. Usually, it matches the following format: `https://www.transifex.com/api/2/project/[PROJECT_SLUG]`.
-
-To avoid passing the `--transifex` option every time when you call the command, you can store it in `package.json`, next to the `ckeditor5-package-tools translations:upload` command.
-
-Examples:
-
-```bash
-yarn run translations:upload --transifex [API URL]
+ClassicEditor
+    .create( document.querySelector( '#editor' ), {
+        plugins: [Video, VideoToolbar, VideoStyle],
+        video: {
+            styles: [
+                'alignLeft', 'alignCenter', 'alignRight'
+            ],
+            toolbar: ['videoStyle:alignLeft', 'videoStyle:alignCenter', 'videoStyle:alignRight']
+        },
+    } )
 ```
 
 ## License
 
-The `@kinto-tech/ckeditor5-video` package is available under [MIT license](https://opensource.org/licenses/MIT).
+The `@kinto-technologies/ckeditor5-video` package is available under [MIT license](https://opensource.org/licenses/MIT).
 
 However, it is the default license of packages created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package and it can be changed.
