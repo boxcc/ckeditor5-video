@@ -1,6 +1,8 @@
 @kinto-technologies/ckeditor5-video
 ==========================
 
+[![npm version](https://badge.fury.io/js/@kinto-technologies%2Fckeditor5-video.svg)](https://badge.fury.io/js/@kinto-technologies%2Fckeditor5-video)
+
 This package was created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package.
 
 This plugin is enabling add video tag to CKEditor5 based on [@visao/ckeditor5-video](https://github.com/Technologie-Visao/ckeditor5-video).
