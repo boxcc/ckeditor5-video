@@ -1,4 +1,4 @@
-import { Plugin } from 'ckeditor5/src/core';
+import { Plugin } from 'ckeditor5';
 import VideoResizeEditing from './videoresize/videoresizeediting';
 import VideoResizeHandles from './videoresize/videoresizehandles';
 import VideoResizeButtons from './videoresize/videoresizebuttons';

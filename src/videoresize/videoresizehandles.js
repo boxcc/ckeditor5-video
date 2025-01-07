@@ -1,5 +1,4 @@
-import { Plugin } from 'ckeditor5/src/core';
-import { WidgetResize } from 'ckeditor5/src/widget';
+import { Plugin, WidgetResize } from 'ckeditor5';
 import VideoLoadObserver from '../video/videoloadobserver';
 
 const RESIZABLE_VIDEOS_CSS_SELECTOR =

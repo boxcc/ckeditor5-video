@@ -1,14 +1,16 @@
+import {
+	ClassicEditor,
+	Bold,
+	Essentials,
+	Heading,
+	MediaEmbed,
+	Paragraph,
+	ImageUpload,
+	ImageInsert
+} from 'ckeditor5';
+import 'ckeditor5/ckeditor5.css';
 import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
-
-import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
-
-import { Bold } from '@ckeditor/ckeditor5-basic-styles';
-import { Essentials } from '@ckeditor/ckeditor5-essentials';
-import { Heading } from '@ckeditor/ckeditor5-heading';
-import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
-import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-
-import { Video, VideoResize, VideoStyle, VideoToolbar } from '../src/index';
+import { Video, VideoResize, VideoStyle, VideoToolbar, VideoUpload } from '../src/index';
 
 /* global document, window */
 
@@ -23,14 +25,20 @@ ClassicEditor
 			Video,
 			VideoResize,
 			VideoStyle,
-			VideoToolbar
+			VideoToolbar,
+			VideoUpload,
+			ImageInsert,
+			ImageUpload
 		],
 		toolbar: [
 			'heading',
 			'|',
 			'bold',
 			'|',
-			'mediaEmbed'
+			'mediaEmbed',
+			'|',
+			'imageUpload',
+			'videoUpload'
 		],
 		video: {
 			resizeOptions: [

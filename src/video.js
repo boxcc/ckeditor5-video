@@ -1,4 +1,4 @@
-import { Plugin } from 'ckeditor5/src/core';
+import { Plugin } from 'ckeditor5';
 import VideoBlock from './videoblock';
 import VideoInline from './videoinline';
 import '../theme/video.css';

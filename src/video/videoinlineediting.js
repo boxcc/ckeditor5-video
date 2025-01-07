@@ -1,6 +1,4 @@
-import { Plugin } from 'ckeditor5/src/core';
-import { ClipboardPipeline } from 'ckeditor5/src/clipboard';
-import { UpcastWriter } from 'ckeditor5/src/engine';
+import { Plugin, ClipboardPipeline, UpcastWriter } from 'ckeditor5';
 import { downcastVideoAttribute } from './converters';
 import VideoEditing from './videoediting';
 import VideoTypeCommand from './videotypecommand';

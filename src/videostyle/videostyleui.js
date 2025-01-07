@@ -1,5 +1,4 @@
-import { Plugin } from 'ckeditor5/src/core';
-import { ButtonView, createDropdown, addToolbarToDropdown, SplitButtonView } from 'ckeditor5/src/ui';
+import { Plugin, ButtonView, createDropdown, addToolbarToDropdown, SplitButtonView } from 'ckeditor5';
 import VideoStyleEditing from './videostyleediting';
 import utils from './utils';
 import { isObject, identity } from 'lodash-es';

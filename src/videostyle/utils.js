@@ -1,5 +1,4 @@
-import { icons } from 'ckeditor5/src/core';
-import { logWarning } from 'ckeditor5/src/utils';
+import { icons, logWarning } from 'ckeditor5';
 
 const {
 	objectFullWidth,

@@ -1,5 +1,4 @@
-import { Plugin } from 'ckeditor5/src/core';
-import { WidgetToolbarRepository } from 'ckeditor5/src/widget';
+import { Plugin, WidgetToolbarRepository } from 'ckeditor5';
 import VideoUtils from './videoutils';
 import { isObject } from 'lodash-es';
 
