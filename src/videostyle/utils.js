@@ -1,17 +1,29 @@
-import { icons, logWarning } from 'ckeditor5';
+import {
+	IconObjectFullWidth,
+	IconObjectInline,
+	IconObjectLeft,
+	IconObjectRight,
+	IconObjectCenter,
+	IconObjectInlineLeft,
+	IconObjectInlineRight,
+	logWarning
+} from 'ckeditor5';
 
-const {
-	objectFullWidth,
-	objectInline,
-	objectLeft,	objectRight, objectCenter,
-	objectBlockLeft, objectBlockRight
-} = icons;
+const icons = {
+	objectFullWidth: IconObjectFullWidth,
+	objectInline: IconObjectInline,
+	objectLeft: IconObjectInlineLeft,
+	objectRight: IconObjectInlineRight,
+	objectCenter: IconObjectCenter,
+	objectBlockLeft: IconObjectLeft,
+	objectBlockRight: IconObjectRight
+};
 
 const DEFAULT_OPTIONS = {
 	inline: {
 		name: 'inline',
 		title: 'In line',
-		icon: objectInline,
+		icon: icons.objectInline,
 		modelElements: [ 'videoInline' ],
 		isDefault: true
 	},
@@ -19,7 +31,7 @@ const DEFAULT_OPTIONS = {
 	alignLeft: {
 		name: 'alignLeft',
 		title: 'Left aligned video',
-		icon: objectLeft,
+		icon: icons.objectLeft,
 		modelElements: [ 'videoBlock', 'videoInline' ],
 		className: 'video-style-align-left'
 	},
@@ -27,7 +39,7 @@ const DEFAULT_OPTIONS = {
 	alignBlockLeft: {
 		name: 'alignBlockLeft',
 		title: 'Left aligned video',
-		icon: objectBlockLeft,
+		icon: icons.objectBlockLeft,
 		modelElements: [ 'videoBlock' ],
 		className: 'video-style-block-align-left'
 	},
@@ -35,7 +47,7 @@ const DEFAULT_OPTIONS = {
 	alignCenter: {
 		name: 'alignCenter',
 		title: 'Centered video',
-		icon: objectCenter,
+		icon: icons.objectCenter,
 		modelElements: [ 'videoBlock' ],
 		className: 'video-style-align-center'
 	},
@@ -43,7 +55,7 @@ const DEFAULT_OPTIONS = {
 	alignRight: {
 		name: 'alignRight',
 		title: 'Right aligned video',
-		icon: objectRight,
+		icon: icons.objectRight,
 		modelElements: [ 'videoBlock', 'videoInline' ],
 		className: 'video-style-align-right'
 	},
@@ -51,7 +63,7 @@ const DEFAULT_OPTIONS = {
 	alignBlockRight: {
 		name: 'alignBlockRight',
 		title: 'Right aligned video',
-		icon: objectBlockRight,
+		icon: icons.objectBlockRight,
 		modelElements: [ 'videoBlock' ],
 		className: 'video-style-block-align-right'
 	},
@@ -59,7 +71,7 @@ const DEFAULT_OPTIONS = {
 	block: {
 		name: 'block',
 		title: 'Centered video',
-		icon: objectCenter,
+		icon: icons.objectCenter,
 		modelElements: [ 'videoBlock' ],
 		isDefault: true
 	},
@@ -67,20 +79,20 @@ const DEFAULT_OPTIONS = {
 	side: {
 		name: 'side',
 		title: 'Side video',
-		icon: objectRight,
+		icon: icons.objectRight,
 		modelElements: [ 'videoBlock' ],
 		className: 'video-style-side'
 	}
 };
 
 const DEFAULT_ICONS = {
-	full: objectFullWidth,
-	left: objectBlockLeft,
-	right: objectBlockRight,
-	center: objectCenter,
-	inlineLeft: objectLeft,
-	inlineRight: objectRight,
-	inline: objectInline
+	full: icons.objectFullWidth,
+	left: icons.objectBlockLeft,
+	right: icons.objectBlockRight,
+	center: icons.objectCenter,
+	inlineLeft: icons.objectLeft,
+	inlineRight: icons.objectRight,
+	inline: icons.objectInline
 };
 
 const DEFAULT_DROPDOWN_DEFINITIONS = [ {

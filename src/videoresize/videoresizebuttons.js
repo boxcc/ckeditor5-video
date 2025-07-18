@@ -1,6 +1,9 @@
 import {
 	Plugin,
-	icons,
+	IconObjectSizeFull,
+	IconObjectSizeLarge,
+	IconObjectSizeMedium,
+	IconObjectSizeSmall,
 	ButtonView,
 	DropdownButtonView,
 	ViewModel as Model,
@@ -12,10 +15,10 @@ import {
 import VideoResizeEditing from './videoresizeediting';
 
 const RESIZE_ICONS = {
-	small: icons.objectSizeSmall,
-	medium: icons.objectSizeMedium,
-	large: icons.objectSizeLarge,
-	original: icons.objectSizeFull
+	small: IconObjectSizeSmall,
+	medium: IconObjectSizeMedium,
+	large: IconObjectSizeLarge,
+	original: IconObjectSizeFull
 };
 
 export default class VideoResizeButtons extends Plugin {
