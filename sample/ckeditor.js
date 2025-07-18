@@ -16,6 +16,7 @@ import { Video, VideoResize, VideoStyle, VideoToolbar, VideoUpload } from '../sr
 
 ClassicEditor
 	.create( document.querySelector( '#editor' ), {
+		licenseKey: 'GPL',
 		plugins: [
 			Essentials,
 			Bold,
